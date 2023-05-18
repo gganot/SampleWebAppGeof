@@ -36,7 +36,7 @@ jobs:
       
       - name: PortalAPISQLDeploy
       - uses: actions/checkout@v3
-      - uses: azure/login@v1                            # Azure login required to add a temporary firewall rule
+      - uses: azure/login@v1                           
         with:
           creds: ${{ secrets.MYCREDENTIAL }}
       - uses: azure/sql-action@v2.2
