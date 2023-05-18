@@ -33,16 +33,7 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-      
-      - name: PortalAPISQLDeploy
-      - uses: actions/checkout@v3
-      - uses: azure/login@v1                           
-        with:
-          creds: ${{ secrets.MYCREDENTIAL }}
-      - uses: azure/sql-action@v2.2
-        with:        
-          connection-string:  ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          path: 'sql/*.sql'
+
   deploy:
     runs-on: windows-latest
     needs: build
