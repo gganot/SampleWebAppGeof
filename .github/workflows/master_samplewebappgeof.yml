@@ -38,9 +38,9 @@ jobs:
         uses: Azure/sql-action@v1
         with:
           # Name of the Azure SQL Server name, like Fabrikam.database.windows.net.
-          server-name: tcp:dotnetthoughts.database.windows.net
+          server-name: geofreyganot.database.windows.net
           # The connection string, including authentication information, for the Azure SQL Server database.
-          connection-string: ${{ secrets.CONNECTION_STRING }}
+          connection-string: Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Persist Security Info=False;User ID=geofreyganot;Password=Geofrey@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
           # Path to SQL script file to deploy
           sql-file: ${{env.DOTNET_ROOT}}/sql/sql-script.sql
 
