@@ -37,7 +37,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: azure/login@v1                            # Azure login required to add a temporary firewall rule
         with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
+          client-id: 368bfaa1-eb9a-4263-a95a-dcd2bbefb61f
+          tenant-id: 99798a7d-67e9-4d24-a434-b665a932295c
+          subscription-id: f1ddf065-57dc-436b-b725-bb1b8686cc2a
       - uses: azure/sql-action@v2.2
         with:        
           connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
