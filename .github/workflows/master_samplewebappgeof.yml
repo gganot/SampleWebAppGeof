@@ -34,10 +34,10 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
       
-      - name: SQL_DEPLOY_CRED
+      - name: PortalAPISQLDeploy
         uses: Azure/sql-action@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.MYCREDENTIAL }}
         # Name of the Azure SQL Server name, like Fabrikam.database.windows.net.
           server-name: geofreyganot.database.windows.net
           # The connection string, including authentication information, for the Azure SQL Server database.
