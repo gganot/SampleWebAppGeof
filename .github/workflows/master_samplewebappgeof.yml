@@ -35,9 +35,12 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myapp
       
       - uses: actions/checkout@v3
+      - uses: azure/login@v1                            # Azure login required to add a temporary firewall rule
+        with:
+         creds: ${{ secrets.AZURE_CREDENTIALS }}
       - uses: azure/sql-action@v2.2
         with:        
-          connection-string: Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Persist Security Info=False;User ID=geofreyganot;Password=Geofrey@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
           path: 'sql/*.sql'
   deploy:
     runs-on: windows-latest
