@@ -58,6 +58,5 @@ jobs:
         id: deploy-sql-script
         uses: azure/sql-action@v2.2
         with:     
-          server-name: geofreyganot.database.windows.net
           connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          arguments: -i sql2/script.sql
+          path: sql2/script.sql
