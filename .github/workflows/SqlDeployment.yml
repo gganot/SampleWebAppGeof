@@ -6,6 +6,11 @@ on:
   
   
 jobs:  
+  deploy:
+    runs-on: self-hosted-ubuntu
+    steps:
+      - uses: elstudio/action-install-azure-cli@v1
+      - uses: azure/webapps-deploy@v2
   build:  
    runs-on: windows-latest  
    steps:  
