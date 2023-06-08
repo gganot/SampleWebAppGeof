@@ -12,10 +12,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+  
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -56,8 +55,8 @@ jobs:
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_755BCA74E7884FD6A62AF3B5F266E3F1 }}
           package: .
       - name: Deploy SQL Script
-      - uses: azure/sql-action@v1
-        with:
-          server-name: 'servername.database.windows.net'
-          connection-string: ${<!-- -->{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          sql-file: './run_sql.sql'
+        id: deploy-sql-script
+        uses: azure/sql-action@v2.2
+        with:        
+          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+          path:  ./${{ github.workspace }}/Sql/sql-script.sql
