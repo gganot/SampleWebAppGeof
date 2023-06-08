@@ -32,14 +32,6 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-      - name: Deploy SQL Script
-        id: deploy-sql-script
-        uses: azure/sql-action@v2.2
-        with: 
-          server-name: geofreyganot.database.windows.net
-          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          path: ./sql2/sql-script.sql
-   
   deploy:
     runs-on: windows-latest
     needs: build
@@ -48,6 +40,13 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Deploy SQL Script
+        id: deploy-sql-script
+        uses: azure/sql-action@v2.2
+        with: 
+          server-name: geofreyganot.database.windows.net
+          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+          path: ./sql2/sql-script.sql
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
