@@ -40,13 +40,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Deploy SQL Script
-        id: deploy-sql-script
-        uses: azure/sql-action@v2.2
-        with: 
-          server-name: geofreyganot.database.windows.net
-          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          path: ./sql2/sql-script.sql
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
@@ -60,4 +53,13 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_755BCA74E7884FD6A62AF3B5F266E3F1 }}
           package: .
+          
+      - uses: actions/checkout@v3
+      - uses: azure/login@v1                            # Azure login required to add a temporary firewall rule
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - uses: azure/sql-action@v2.2
+        with:        
+          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+          path: '.sql2//sql-script.sql'
    
