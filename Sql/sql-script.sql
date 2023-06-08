@@ -1,5 +1,5 @@
 
-Create Procedure GetEmployeeById
+Create Procedure GetEmployeeById_TEST1
 (@id as int)
 
 as
