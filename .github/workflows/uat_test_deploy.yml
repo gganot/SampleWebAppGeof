@@ -13,9 +13,8 @@ jobs:
   build:
     runs-on: windows-latest
   
-  steps:
+    steps:
       - uses: actions/checkout@v2
-
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -58,7 +57,6 @@ jobs:
       - name: Deploy SQL Script
         id: deploy-sql-script
         uses: azure/sql-action@v2.2
-         run: echo "Hello, world!"
         with:        
           connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
           path: ./Sql/sql-script.sql
