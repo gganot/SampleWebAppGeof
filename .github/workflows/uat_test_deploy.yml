@@ -59,6 +59,6 @@ jobs:
         id: deploy-sql-script
         uses: azure/sql-action@v1
         with:
-          server-name: 'servername.database.windows.net'
+          server-name: 'geofreyganot.database.windows.net'
           connection-string: ${<!-- -->{ secrets.AZURE_SQL_CONNECTION_STRING }}
           sql-file: './run_sql.sql'
