@@ -60,4 +60,4 @@ jobs:
         uses: azure/sql-action@v2.2
         with:        
           connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-          path: ${{env.DOTNET_ROOT}}/Sql/sql-script.sql
+          path: ./Sql/sql-script.sql
