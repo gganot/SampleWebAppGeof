@@ -61,4 +61,4 @@ jobs:
         with:
           server-name: 'geofreyganot.database.windows.net'
           connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Persist Security Info=False;User ID=geofreyganot;Password=Geofrey@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-          sql-file: '../Sql/sql-script.sql.sql'
+          sql-file: './Sql/sql-script.sql'
