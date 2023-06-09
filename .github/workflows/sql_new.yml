@@ -20,6 +20,6 @@ jobs:
       with:  
         server-name: 'tcp:geofreyganot.database.windows.net,1433'  
         connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Persist Security Info=False;User ID=geofreyganot;Password=Geofrey@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-        sql-file: ${{env.GITHUB_WORKSPACE}}/sql-script.sql
+        sql-file: 'https://github.com/gganot/SampleWebAppGeof/blob/master/SampleWebAppGeof/sql-script.sql'
     - run: |
         az webapp list --query "[?state=='Running']"
