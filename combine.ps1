@@ -1,1 +1,1 @@
-Write-Host "Hello, World!"
+Write-Host $GITHUB_WORKSPACE
