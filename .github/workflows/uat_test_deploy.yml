@@ -34,7 +34,7 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
       - name: Deploy Sql
-        run: env
+        run: echo "${{env.DOTNET_ROOT}}"
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
