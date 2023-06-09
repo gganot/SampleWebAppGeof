@@ -1,26 +1,13 @@
-on:  
- push:  
-    branches: [ master ]  
- pull_request:  
-    branches: [ master ]  
-
-name: AzureLoginSample
+on: [push]
 
 jobs:
-
-  build-and-deploy:
+  build:
     runs-on: windows-latest
     steps:
-    - name: Deploy Sql
-    - uses: actions/checkout@v1
-    - uses: azure/login@v1
+    - uses: actions/checkout@v3
+    - uses: azure/sql-action@v2.2
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - uses: Azure/sql-action@v2
-      with:  
-        server-name: 'tcp:geofreyganot.database.windows.net,1433'  
-        connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Persist Security Info=False;User ID=geofreyganot;Password=Geofrey@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
         path: './SampleDatabaseForDeployment.dacpac'
-        action: publish
-    - run: |
-        az webapp list --query "[?state=='Running']"
+        action: 'publish'
+        arguments: '/p:DropObjectsNotInSource=true'   # Optional properties parameters for SqlPackage Publish
