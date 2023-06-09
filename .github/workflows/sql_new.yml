@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Deploy Sql
-      run: |
-        echo ${{env.DOTNET_ROOT}}
+      run: env
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
