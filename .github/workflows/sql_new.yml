@@ -11,6 +11,6 @@ jobs:
     - uses: azure/sql-action@v2.2
       with:
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        path: './SampleDatabaseForDeployment.dacpac'
+        path: './SampleDatabaseForDeployment_UAT.dacpac'
         action: 'Publish'
       
