@@ -14,7 +14,7 @@ jobs:
     - uses: Azure/sql-action@v1
       with:  
         server-name: 'tcp:geofreyganot.database.windows.net,1433'  
-        connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
+        connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Persist Security Info=False;User ID=geofreyganot;Password=Geofrey@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
         sql-file: ${{env.DOTNET_ROOT}}/sql/sql-script.sql
     - run: |
         az webapp list --query "[?state=='Running']"
