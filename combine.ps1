@@ -1,27 +1,13 @@
-param(
-    #[string]$path = $(throw "You must enter the path to the .sql files you want to append."),
-    [string]$NewFileName = "Out.sql"
-)
- 
-$path = "/Sql"
-$outFile = "$path\$NewFileName"
- 
-cls
-if((Test-Path $outFile) -eq $true) {Remove-Item -Path $outFile -Force}
- 
-$files = Get-ChildItem -LiteralPath $path -Include "*.sql" -Recurse | Sort-Object -Property Name
- 
-New-Item -ItemType file -Path $outFile -Force | Out-Null
- 
-foreach($file in $files)
-{
-    Write-Host "Appending file $file..." -ForegroundColor Gray
-    $content = Get-Content -Path $file.FullName
-    Add-Content -Path $outFile "----------------------------------------------------------------------------------------------------------------------------------------------------------------"
-    Add-Content -Path $outFile "--      $File"
-    Add-Content -Path $outFile "----------------------------------------------------------------------------------------------------------------------------------------------------------------"
-    Add-Content -Path $outFile $content
-    Add-Content -Path $outFile "GO`n"
+$path = "/Sql
+$out  = "/Sql/Out.sql"
+
+Get-ChildItem $path -Filter *.sql| % {
+    $file = $_.Name
+    " " | Out-File -Append $out
+    "-----------------------------------" | Out-File -Append $out
+    "--${file}:" | Out-File -Append $out
+           " " | Out-File -Append $out
+    Get-Content $_.FullName | % {
+        "$_" | Out-File -Append $out
+    }
 }
- 
-Write-Host "Completed file $outFile" -ForegroundColor DarkGreen
