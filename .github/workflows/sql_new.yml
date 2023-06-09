@@ -11,10 +11,10 @@ jobs:
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - uses: Azure/sql-action@v2.2
+    - uses: Azure/sql-action@v1
       with:  
         server-name: 'tcp:geofreyganot.database.windows.net,1433'  
         connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
-        path: 'run_sql.sql'      
+        sql-file: ${{env.DOTNET_ROOT}}/sql/sql-script.sql
     - run: |
         az webapp list --query "[?state=='Running']"
