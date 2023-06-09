@@ -15,6 +15,6 @@ jobs:
       with:  
         server-name: 'tcp:geofreyganot.database.windows.net,1433'  
         connection-string: 'Server=tcp:geofreyganot.database.windows.net,1433;Initial Catalog=SampleDatabaseForDeployment;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication="Active Directory Default";'
-        sql-file: './run_sql.sql'      
+        path: './run_sql.sql'      
     - run: |
         az webapp list --query "[?state=='Running']"
