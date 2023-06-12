@@ -1,0 +1,27 @@
+name: PowerShell Script
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run PowerShell script
+        shell: pwsh
+        run: |
+          # Replace the following line with the path to your PowerShell script
+          $scriptPath = './append_sql_into_one.ps1'
+          
+          # Run the PowerShell script
+          Write-Host "Running PowerShell script: $scriptPath"
+          & $scriptPath
