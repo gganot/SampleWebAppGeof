@@ -1,13 +1,2 @@
-$path = ".\Sql"
-$out  = ".\Sql\Base.sql"
-
-Get-ChildItem $path -Filter *.sql| % {
-    $file = $_.Name
-    " " | Out-File -Append $out
-    "-----------------------------------" | Out-File -Append $out
-    "--${file}:" | Out-File -Append $out
-           " " | Out-File -Append $out
-    Get-Content $_.FullName | % {
-        "$_" | Out-File -Append $out
-    }
-}
+# This is a PowerShell script to echo a message
+Write-Host "Hello, GitHub Actions! Path : ${{ github.workspace }}"
