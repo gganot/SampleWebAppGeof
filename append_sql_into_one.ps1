@@ -1,5 +1,5 @@
 $NewFileName = "Base.sql"
-$path = "$(build.artifactstagingdirectory)\sql"
+$path = ".\Sql\"
 $outFile = "$path\$NewFileName"
  
 cls
