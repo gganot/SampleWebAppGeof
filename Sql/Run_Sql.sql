@@ -1,15 +1,11 @@
-IF OBJECT_ID('GetEmployeeBy_June192023', 'P') IS NOT NULL
-BEGIN
-    DROP PROCEDURE GetEmployeeBy_June192023;
-END
-
-GO
-
-Create Procedure GetEmployeeBy_June192023
-(@id as int)
-
-as
-
-Select * from Employee where EmployeeID = @id
-
+Alter table Employee 
+Add department varchar(100) null
 Go
+
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
