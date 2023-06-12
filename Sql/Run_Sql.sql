@@ -59,3 +59,9 @@ END;
 
 Go
 
+ALTER FUNCTION [dbo].[ufnGetAccountingEndDate]()
+RETURNS [datetime]
+AS
+BEGIN
+   return GetDate()
+END;
