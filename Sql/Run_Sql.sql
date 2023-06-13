@@ -8,6 +8,12 @@ Add HourlyRate decimal(17,2) null
 Go
 
 
+Alter table Employee 
+Add HourlyRate decimal(17,2) null
+Go
+
+
+
 Create Procedure sp_TestJune122023
 
 as
@@ -54,7 +60,7 @@ Create FUNCTION [dbo].[ufnGetAccountingEndDate]()
 RETURNS [datetime]
 AS
 BEGIN
-    RETURN DATEADD(millisecond, -2, CONVERT(datetime, '20040701', 112));
+    RETURN DATEADD(millisecond, -2, CONVERT(datetime,'20040701', 112));
 END;
 
 Go
@@ -74,5 +80,6 @@ ALTER Procedure [dbo].[GetEmployee]
 as
 
 Select * from Employee where EmployeeID=@EmployeeID
+
 
 Go
