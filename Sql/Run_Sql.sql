@@ -65,3 +65,14 @@ AS
 BEGIN
    return GetDate()
 END;
+
+Go
+
+ALTER Procedure [dbo].[GetEmployee]
+(@EmployeeID as int)
+
+as
+
+Select * from Employee where EmployeeID=@EmployeeID
+
+Go
