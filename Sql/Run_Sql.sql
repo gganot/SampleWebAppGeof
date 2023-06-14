@@ -108,3 +108,5 @@ Go
 
 insert into Locations values(1,'Davao City')
 Go
+
+update Locations set LocName='Cebu City' where LocationID=1
