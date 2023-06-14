@@ -81,5 +81,5 @@ Select * from Employee where EmployeeID=@EmployeeID
 Go
 
 Alter table Employee 
-Add HourlyRate decimal(17,2) null
+Add HourlyRate float null
 Go
