@@ -105,3 +105,6 @@ BEGIN
 END
 
 Go
+
+insert into Locations values(1,'Davao City')
+Go
