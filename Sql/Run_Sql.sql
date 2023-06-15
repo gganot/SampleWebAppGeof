@@ -110,5 +110,5 @@ insert into Locations values(1,'Davao City')
 Go
 
 Alter table Employee 
-Add DailyRate float null
+Alter Column DailyRate float null
 Go
