@@ -109,6 +109,6 @@ Go
 insert into Locations values(1,'Davao City')
 Go
 
-update Locations set LocName='Davao City' where LocationID=1
-
-update Locations set LocName='Cebu City' where LocationID=2
+Alter table Employee 
+Add DailyRate float null
+Go
